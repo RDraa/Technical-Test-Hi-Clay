@@ -16,9 +16,16 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] private LayerMask floor;
 
+    [SerializeField] private Animator animator;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -33,6 +40,8 @@ public class MovementController : MonoBehaviour
 
         transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
 
+        bool isMoving = Mathf.Abs(horizontalInput) > 0.01f;
+        animator.SetBool("isWalk", isMoving);
 
         if (horizontalInput > 0.01f)
         {
@@ -60,6 +69,7 @@ public class MovementController : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpForce);
             Debug.Log("Jump!");
         }
+        animator.SetBool("isJump", !IsGrounded());
     }
 
     private void Gravity()
