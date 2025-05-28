@@ -38,18 +38,18 @@ public class MovementController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         // float airSpeed = 0.1f;
 
-        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+        transform.Translate(transform.right * horizontalInput * moveSpeed * Time.deltaTime);
 
         bool isMoving = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalk", isMoving);
 
         if (horizontalInput > 0.01f)
         {
-            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (horizontalInput < -0.01f)
         {
-            transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
         // if (!IsGrounded())
