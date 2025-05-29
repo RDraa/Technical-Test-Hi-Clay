@@ -12,8 +12,14 @@ public class CameraFollow : MonoBehaviour
     public float smoothFactor;
     public Vector3 maxValue, minValue;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
+
+        if (characterPosition == null)
+        {
+            Debug.Log("character Position Kosong");
+            return;
+        }
         FollowTarget(characterPosition);
     }
 
@@ -21,7 +27,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target == null) return;
 
-        Vector3 targetPosition = characterPosition.position + offset;
+        Vector3 targetPosition = target.position + offset;
         Vector3 boundPosition = new Vector3(
             Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x),
             Mathf.Clamp(targetPosition.y, minValue.y, maxValue.y),
