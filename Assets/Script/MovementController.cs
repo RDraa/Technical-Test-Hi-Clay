@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float groundCheckRadius = 0.2f;
 
-    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private Transform groundCheck;
 
@@ -20,7 +20,7 @@ public class MovementController : MonoBehaviour
 
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (animator == null)
         {
@@ -66,7 +66,7 @@ public class MovementController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             Debug.Log("Jump!");
         }
         animator.SetBool("isJump", !IsGrounded());
@@ -74,13 +74,13 @@ public class MovementController : MonoBehaviour
 
     private void Gravity()
     {
-        if (body.velocity.y < 0)
+        if (rb.velocity.y < 0)
         {
-            body.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (body.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            body.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
