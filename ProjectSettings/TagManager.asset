@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - floor
+  - enemy
+  - Area 1
   layers:
   - Default
   - TransparentFX
@@ -11,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - floor
+  - enemy
   - 
   - 
   - 
@@ -38,6 +41,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: New Layer 7
+    uniqueID: 3775483961
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 3066854377
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2126328807
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 3234052281
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 6420631
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 2121326083
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 3426368933
     locked: 0
