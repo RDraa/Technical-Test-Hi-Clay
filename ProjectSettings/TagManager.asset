@@ -9,6 +9,7 @@ TagManager:
   - Area 1
   - Bubble
   - Regen
+  - Witch
   layers:
   - Default
   - TransparentFX
