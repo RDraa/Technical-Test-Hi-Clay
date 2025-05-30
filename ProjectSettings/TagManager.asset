@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - Area 1
   - Bubble
+  - Regen
   layers:
   - Default
   - TransparentFX
