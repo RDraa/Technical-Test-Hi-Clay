@@ -14,6 +14,14 @@ public class HealthItem : MonoBehaviour
             BubbleStat bubbleStat = other.GetComponent<BubbleStat>();
             if (bubbleStat.health < 3)
             {
+                if (bubbleStat.health == 2)
+                {
+                    bubbleStat.healthUI1.SetActive(true);
+                }
+                if (bubbleStat.health == 1)
+                {
+                    bubbleStat.healthUI2.SetActive(true);
+                }
                 bubbleStat.health += itemRegen;
                 Destroy(gameObject);
                 Debug.Log("Health Bubble: " + bubbleStat.health);
