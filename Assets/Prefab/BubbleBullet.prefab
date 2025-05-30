@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64dced825a1a0b428b26b0dd10c2236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootDamageAudioClip: {fileID: 8300000, guid: c65930c13a1d1c84f8dd3fdb94887870, type: 3}
   speedBullet: 20
   damage: 25
   rb: {fileID: 4242236944406716062}

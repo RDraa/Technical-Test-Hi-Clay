@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthItem : MonoBehaviour
 {
+    [SerializeField] private AudioClip regenAudioClip;
     private int itemRegen = 1;
     // public BubbleStat bubbleStat;
 
@@ -11,6 +12,7 @@ public class HealthItem : MonoBehaviour
     {
         if (other.CompareTag("Bubble"))
         {
+            AudioManager.Instance.PlaySound(regenAudioClip);
             BubbleStat bubbleStat = other.GetComponent<BubbleStat>();
             if (bubbleStat.health < 3)
             {

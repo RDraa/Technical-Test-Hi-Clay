@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private AudioClip shootDamageAudioClip;
     public float speedBullet = 20f;
     public int damage = 25;
     public Rigidbody2D rb;
@@ -22,6 +23,7 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakeDamage(damage);
         }
+        AudioManager.Instance.PlaySound(shootDamageAudioClip);
         GameObject popVFX = Instantiate(bubblePop, transform.position, transform.rotation);
         Debug.Log(hitInfo.name);
         Destroy(gameObject);
