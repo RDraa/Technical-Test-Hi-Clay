@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1939037548861861858}
   - component: {fileID: 2020325729997632677}
   - component: {fileID: 3710367965868409713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 5
   timer: 0
+  rotateSpeed: 360
 --- !u!50 &2020325729997632677
 Rigidbody2D:
   serializedVersion: 4

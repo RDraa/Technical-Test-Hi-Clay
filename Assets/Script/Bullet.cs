@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speedBullet = 20f;
-    public int damage = 55;
+    public int damage = 25;
     public Rigidbody2D rb;
     public GameObject bubblePop;
 

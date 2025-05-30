@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask floor;
+    [SerializeField] private Animator animator;
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float jumpForce = 4f;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float groundCheckRadius = 0.2f;
-
-    [SerializeField] private Rigidbody2D rb;
-
-    [SerializeField] private Transform groundCheck;
-
-    [SerializeField] private LayerMask floor;
-
-    [SerializeField] private Animator animator;
 
     void Start()
     {

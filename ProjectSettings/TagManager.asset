@@ -17,9 +17,9 @@ TagManager:
   - UI
   - floor
   - enemy
-  - 
-  - 
-  - 
+  - bulletPlayer
+  - bulletEnemy
+  - AreaTrigger
   - 
   - 
   - 

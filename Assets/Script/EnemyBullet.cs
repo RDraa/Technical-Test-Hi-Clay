@@ -10,6 +10,7 @@ public class EnemyBullet : MonoBehaviour
 
     public float force;
     public float timer;
+    public float rotateSpeed = 360f;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class EnemyBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        transform.Rotate(0f, 0f, rotateSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)

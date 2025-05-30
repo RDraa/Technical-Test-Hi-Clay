@@ -4,37 +4,83 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    private bool isAttacking = false;
+    private Animator enemyAnimator;
+    private Vector3 originalScale;
     private GameObject bubble;
+    private float timer;
+
     public GameObject bulletEnemy;
     public Transform bulletPos;
+    public float attackInterval = 5f;
+    public float bubbleDetectionRadius = 3f;
 
-    private float timer;
+
 
     void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         bubble = GameObject.FindGameObjectWithTag("Bubble");
+        originalScale = transform.localScale;
     }
 
     void Update()
     {
+        if (bubble == null) return;
+
         timer += Time.deltaTime;
+        BubbleDistance();
+    }
 
-        float distance = Vector2.Distance(transform.position, bubble.transform.position);
-
-        if (distance < 9)
+    void RotateEnemy()
+    {
+        if (bubble.transform.position.x > transform.position.x)
         {
-            timer += Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+    }
 
-            if (timer > 2)
+    void BubbleDistance()
+    {
+        float distance = Vector2.Distance(transform.position, bubble.transform.position);
+        // Debug.Log("Jarak player dan enemy: " + distance);
+
+        if (distance < bubbleDetectionRadius)
+        {
+            RotateEnemy();
+
+            if (!isAttacking && timer >= attackInterval)
             {
-                timer = 0;
-                Shoot();
+                timer = 0f;
+                StartCoroutine(AttackDelay());
             }
+        }
+        else
+        {
+            timer = 0f;
         }
     }
 
     void Shoot()
     {
         Instantiate(bulletEnemy, bulletPos.position, Quaternion.identity);
+    }
+    
+    IEnumerator AttackDelay()
+    {
+        isAttacking = true;
+        enemyAnimator.Play("Attack");
+
+        yield return new WaitForSeconds(0.5f);
+        Shoot();
+
+        yield return new WaitForSeconds(1f);
+        enemyAnimator.Play("Idle");
+
+        isAttacking = false;
     }
 }
