@@ -6,8 +6,6 @@ public class Weapon : MonoBehaviour
 {
     public Transform gunPoint;
     public GameObject bulllets; 
-    public LineRenderer lineRenderer;
-    private Bullet bullet;
 
     void Update()
     {
@@ -22,7 +20,5 @@ public class Weapon : MonoBehaviour
     {
 
         Instantiate(bulllets, gunPoint.position, gunPoint.rotation);
-        // lineRenderer.SetPosition(0, gunPoint.position);
-        // lineRenderer.SetPosition(1, bullet.hitInfo.gunPoint);
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4242236944406716062}
   - component: {fileID: 2506156386324974778}
   - component: {fileID: 8236080812425605496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BubbleBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBullet: 20
-  damage: 55
+  damage: 25
   rb: {fileID: 4242236944406716062}
   bubblePop: {fileID: 2326438141734485062, guid: 82391d20686675849bcca713fb1bc334, type: 3}

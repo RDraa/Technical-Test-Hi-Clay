@@ -7,6 +7,9 @@ TagManager:
   - floor
   - enemy
   - Area 1
+  - Bubble
+  - Regen
+  - Witch
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,9 @@ TagManager:
   - UI
   - floor
   - enemy
-  - 
-  - 
-  - 
+  - bulletPlayer
+  - bulletEnemy
+  - AreaTrigger
   - 
   - 
   - 

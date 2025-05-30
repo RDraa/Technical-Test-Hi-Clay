@@ -6,11 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform characterPosition;
     public GameObject characterObject;
-
+    public Vector3 maxValue, minValue;
     public Vector3 offset;
     [Range(1, 10)]
     public float smoothFactor;
-    public Vector3 maxValue, minValue;
 
     void LateUpdate()
     {
