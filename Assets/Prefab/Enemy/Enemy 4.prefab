@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205ebaadda313c43815398453b537e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyShootAudioClip: {fileID: 8300000, guid: 985f79bbbc628604aa789d38cfb1ebbe, type: 3}
   bulletEnemy: {fileID: 7000270408916453786, guid: ed24872f875157e4aace768f866e367c, type: 3}
   bulletPos: {fileID: 7963209718532872570}
   waypoints:
@@ -237,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4678481608d94c4469f0f1f7b378b032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popAudioClip: {fileID: 8300000, guid: 2e87647ec0a09b44688dedf86864fa92, type: 3}
   bubbles:
   - {fileID: 2353633882649178412, guid: fc2693d1fd39e4d45a457926fca74cf3, type: 3}
   - {fileID: 8139950354941415756, guid: ca9dea6124a182c40a3e26ebde479695, type: 3}
@@ -246,6 +248,7 @@ MonoBehaviour:
   - {fileID: 7797414507237271699, guid: e28b596600f94e149bbf721d354f539f, type: 3}
   - {fileID: 2794813628624764178, guid: 72c5f8a35df584544b9456548d6440fd, type: 3}
   - {fileID: 7182476976194838259, guid: 4d94527a3a2e80149909128247fde8d2, type: 3}
+  deadAnim: {fileID: 1506490841290087754, guid: 728dae0496381e141bae5c0fb84b0d8a, type: 3}
   health: 100
 --- !u!1 &4731655121469475149
 GameObject:

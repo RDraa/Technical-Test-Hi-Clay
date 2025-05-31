@@ -13,6 +13,21 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private Transform stepPoint;
+    [SerializeField] private Transform jumpPoint;
+    [SerializeField] private Transform fallPoint;
+    [SerializeField] private GameObject stepVFX;
+    [SerializeField] private GameObject jumpVFX;
+    [SerializeField] private GameObject fallVFX;
+    [SerializeField] private AudioClip playerMovementAudioClip;
+    [SerializeField] private AudioClip playerJumpAudioClip;
+    [SerializeField] private AudioClip playerFallAudioClip;
+    private bool wasGrounded = true;
+    private float stepTimer;
+    public float stepCooldown = 0.3f;
+    public static bool isGamePaused = false;
+
+
 
     void Start()
     {
@@ -26,18 +41,45 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        if (GameManagerScript.isGamePaused) return;
+        bool isGrounded = IsGrounded();
+                
+        if (!wasGrounded && isGrounded)
+        {
+            AudioManager.Instance.PlaySound(playerFallAudioClip);
+            GameObject fallEffect = Instantiate(fallVFX, fallPoint.position, fallPoint.rotation);
+            Destroy(fallEffect, 0.3f);
+        }
+
+        wasGrounded = isGrounded;
         MController();
     }
 
     private void MController()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        // float airSpeed = 0.1f;
-
         transform.Translate(transform.right * horizontalInput * moveSpeed * Time.deltaTime);
 
         bool isMoving = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalk", isMoving);
+
+        if (isMoving)
+        {
+            stepTimer += Time.deltaTime;
+            AudioManager.Instance.PlayLoop(playerMovementAudioClip);
+
+            if (stepTimer >= stepCooldown)
+            {
+                GameObject stepEffect = Instantiate(stepVFX, stepPoint.position, stepPoint.rotation);
+                Destroy(stepEffect, 0.3f);
+                stepTimer = 0f;
+            }
+        }
+        else
+        {
+            stepTimer = stepCooldown;
+            AudioManager.Instance.StopLoop();
+        }
 
         if (horizontalInput > 0.01f)
         {
@@ -47,12 +89,6 @@ public class MovementController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-
-        // if (!IsGrounded())
-        // {
-        //     float clampedX = Mathf.Clamp(body.velocity.x, -airSpeed, airSpeed);
-        //     body.velocity = new Vector2(clampedX, body.velocity.y);
-        // }
 
         Jump();
         Gravity();
@@ -64,6 +100,9 @@ public class MovementController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             Debug.Log("Jump!");
+            AudioManager.Instance.PlaySound(playerJumpAudioClip);
+            GameObject jumpEffect = Instantiate(jumpVFX, jumpPoint.position, jumpPoint.rotation);
+            Destroy(jumpEffect, 0.3f);
         }
         animator.SetBool("isJump", !IsGrounded());
     }
@@ -82,6 +121,8 @@ public class MovementController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, floor);
+        RaycastHit2D hit = Physics2D.CircleCast(groundCheck.position, groundCheckRadius, Vector2.down, 0.1f, floor);
+        return hit.collider != null;
     }
+
 }

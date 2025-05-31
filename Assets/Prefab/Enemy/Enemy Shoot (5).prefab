@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6731d6ac90ee62940a2b029fb84a3120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyShootAudioClip: {fileID: 8300000, guid: 5e5098a41ca61d34d9af8d8b678908fd, type: 3}
   bulletEnemy: {fileID: 3547350167402210799, guid: 82e31ba7d8646ae49a03229e076ed026, type: 3}
   bulletPos: {fileID: 119167895921087035}
   attackInterval: 4
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4678481608d94c4469f0f1f7b378b032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popAudioClip: {fileID: 8300000, guid: 2e87647ec0a09b44688dedf86864fa92, type: 3}
   bubbles:
   - {fileID: 2353633882649178412, guid: fc2693d1fd39e4d45a457926fca74cf3, type: 3}
   - {fileID: 8139950354941415756, guid: ca9dea6124a182c40a3e26ebde479695, type: 3}
@@ -241,4 +243,5 @@ MonoBehaviour:
   - {fileID: 7797414507237271699, guid: e28b596600f94e149bbf721d354f539f, type: 3}
   - {fileID: 2794813628624764178, guid: 72c5f8a35df584544b9456548d6440fd, type: 3}
   - {fileID: 7182476976194838259, guid: 4d94527a3a2e80149909128247fde8d2, type: 3}
+  deadAnim: {fileID: 1506490841290087754, guid: 728dae0496381e141bae5c0fb84b0d8a, type: 3}
   health: 75

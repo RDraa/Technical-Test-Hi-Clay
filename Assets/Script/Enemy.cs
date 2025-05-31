@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private AudioClip popAudioClip;
     private bool isDead = false;
     private float flySpeed = 2f;
     private GameObject currentBubble;
 
     public GameObject[] bubbles;
+    public GameObject deadAnim;
     public int health = 100;
 
 
@@ -101,6 +103,9 @@ public class Enemy : MonoBehaviour
         }
 
         Destroy(gameObject);
+        AudioManager.Instance.PlaySound(popAudioClip);
+        GameObject diedVFX = Instantiate(deadAnim, transform.position, transform.rotation);
+        Destroy(diedVFX, 1f);
     }
 
 }

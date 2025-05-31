@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private AudioClip enemyShootAudioClip;
     private Animator enemyAnimator;
     private Transform bubble;
     private int currentWaypointIndex = 0;
@@ -111,6 +112,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Shoot()
     {
+        AudioManager.Instance.PlaySound(enemyShootAudioClip);
         Instantiate(bulletEnemy, bulletPos.position, Quaternion.identity);
     }
 

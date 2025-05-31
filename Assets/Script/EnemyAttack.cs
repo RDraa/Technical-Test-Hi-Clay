@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] private AudioClip enemyShootAudioClip;
     private bool isAttacking = false;
     private Animator enemyAnimator;
     private Vector3 originalScale;
@@ -67,6 +68,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Shoot()
     {
+        AudioManager.Instance.PlaySound(enemyShootAudioClip);
         Instantiate(bulletEnemy, bulletPos.position, Quaternion.identity);
     }
     
