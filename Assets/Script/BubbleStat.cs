@@ -13,9 +13,9 @@ public class BubbleStat : MonoBehaviour
 
     [SerializeField] private AudioClip takeDamageAudioClip;
     private Animator hitBubbleAnim;
-    private bool hitAt2 = false;
-    private bool hitAt1 = false;
-    private bool hitAt0 = false;
+    public bool hitAt2 = false;
+    public bool hitAt1 = false;
+    public bool hitAt0 = false;
 
     void Start()
     {

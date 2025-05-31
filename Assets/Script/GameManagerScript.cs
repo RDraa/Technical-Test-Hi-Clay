@@ -18,17 +18,14 @@ public class GameManagerScript : MonoBehaviour
     public GameObject gameLoop;
     public string sceneName;
     public static bool isGamePaused = false;
+    public bool isTutorialActive = false;
 
-    void Start()
-    {
-        Time.timeScale = 1f;
-        isGamePaused = false;
-    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (isTutorialActive) return;
             if (isGamePaused)
             {
                 Resume();
@@ -50,6 +47,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void Restart()
     {
+        isTutorialActive = false;
         Time.timeScale = 1f;
         isGamePaused = false;
         SceneManager.LoadScene(sceneName);
@@ -60,10 +58,12 @@ public class GameManagerScript : MonoBehaviour
 
     public void GameOver()
     {
+        isTutorialActive = true;
         StartCoroutine(TriggerGameOver());
     }
     public void GameOver1()
     {
+        isTutorialActive = true;
         bgm.SetActive(false);
         isGamePaused = true;
         player.SetActive(false);
@@ -76,6 +76,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void GameFinish()
     {
+        isTutorialActive = true;
         StartCoroutine(TriggerFinish());
     }
     public void Paused()
@@ -126,7 +127,7 @@ public class GameManagerScript : MonoBehaviour
     private IEnumerator TriggerGameOver()
     {
         bgm.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         isGamePaused = true;
         player.SetActive(false);
         Time.timeScale = 0f;
